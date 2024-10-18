@@ -11,6 +11,9 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      dropShadow: {
+        custom: "0 0 29px rgba(0, 0, 0, 0.25)",
+      },
     },
   },
   plugins: [],
