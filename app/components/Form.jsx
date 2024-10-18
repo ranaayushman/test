@@ -15,12 +15,12 @@ const Form = () => {
 
   return (
     <div className="flex bg-white drop-shadow-custom rounded-md">
-      <div className="bg-white p-4 rounded-md">
+      <div className="bg-white pt-4 p-8 rounded-md">
         <form className="flex">
           <div className="w-full">
             {formFields.map((section) => (
               <div key={section.section} className="space-y-4">
-                <h3 className="text-lg font-semibold mb-4">
+                <h3 className="text-lg my-4">
                   {section.heading}
                 </h3>
                 {section.fields.map((field) => (

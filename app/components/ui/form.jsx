@@ -88,7 +88,7 @@ const FormField = ({ field, value, onChange }) => {
                 onChange={onChange}
                 className="mr-2"
               />
-              <span>{option}</span>
+              <span>{option}</span> 
             </label>
           ))}
         </div>
