@@ -31,43 +31,99 @@ export const Menus = [
 
 export const formFields = [
   {
-    section: "Personal Information",
     fields: [
       {
         type: "text",
-        placeholder: "Enter your full name",
-        label: "Full Name*",
+        placeholder: "Enter Serial No",
+        label: "Serial No:",
       },
-      {
-        type: "file",
-        placeholder: "Upload a profile picture (maximum 2MB)",
-        label: "Profile Picture*",
-      },
-    ],
-  },
-  {
-    section: "Plan Details",
-    fields: [
-      { type: "select", placeholder: "Select Plan", label: "Select Plan" },
-      { type: "text", placeholder: "Total Amount", label: "Plan Amount" },
-      { type: "date", placeholder: "Select Date", label: "Start Date" },
-      { type: "date", placeholder: "Plan End Date", label: "Expiry Date" },
       {
         type: "select",
-        placeholder: "Select Your Payment Method",
-        label: "Payment Method",
+        placeholder: "Select CLASS",
+        label: "CLASS to which admission sought:",
       },
       {
         type: "date",
         placeholder: "Select Date",
-        label: "Due Amount Reminder",
+        label: "Admission Date",
       },
       {
         type: "date",
-        placeholder: "2023-05-25",
-        label: "Bill Date",
-        readOnly: true,
+        placeholder: "Select Session",
+        label: "Session:",
       },
+      {
+        type: "text",
+        placeholder: "Enter Your Full Name",
+        label: "Name:",
+      },
+      {
+        type: "file",
+        placeholder: "Upload a profile picture maximum 2MB",
+        label: "Profile Picture",
+      },
+      {
+        type: "radio",
+        name: "Gender:",
+        options: ["Male", "Female", "Transgender"],
+        label: "Gender*",
+        required: true,
+      },
+      {
+        type: "date",
+        placeholder: "dd/mm/yyy",
+        label: "Date of Birth:",
+      },
+      {
+        type: "text",
+        placeholder: "Father/Guardian’s Name",
+        label: "Father/Guardian’s Name:",
+      },
+      {
+        type: "text",
+        placeholder: "Father/Guardian’s Occupation",
+        label: "Father/Guardian’s Occupation:",
+      },
+      {
+        type: "text",
+        placeholder: "Mother’s Name",
+        label: "Mother’s Name:",
+      },
+      {
+        type: "text",
+        placeholder: "Mother’s Residential Address",
+        label: "Mother’s Residential Address:",
+      },
+      {
+        type: "radio",
+        name: "Only Child",
+        options: ["Yes", "No"],
+        label: "Only Child:",
+        required: true,
+      },
+      {
+        type: "radio",
+        name: "Category",
+        options: ["General", "SC", "ST","OBC","EWS (Attach Proof)"],
+        label: "Category",
+        required: true,
+      },
+      {
+        type: "select",
+        placeholder: "Select Last Class Attended",
+        label: "Last Class Attended:",
+      },
+      {
+        type: "radio",
+        name: "Last School affiliated is:",
+        options: ["CBSE", "ICSE", "IB","State Board","Other (please specify)"],
+        label: "Last School affiliated is:",
+        required: true,
+      },
+      
     ],
+    heading: "Personal",
   },
+  
+  
 ];
