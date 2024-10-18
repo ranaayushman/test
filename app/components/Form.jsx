@@ -17,9 +17,8 @@ const Form = () => {
     <div className="w-full border bg-white rounded-md p-4 drop-shadow-custom">
       <form className="flex">
         <div className="w-full">
-          {formFields.map((section, index) => (
+          {formFields.map((section) => (
             <div key={section.section} className="space-y-4">
-              <h3 className="text-lg font-semibold mb-4">{section.section}</h3>
               {section.fields.map((field) => (
                 <div key={field.label}>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -40,4 +39,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Form;
