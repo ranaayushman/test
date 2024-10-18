@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { ChevronRight, Image } from "lucide-react";
+import { ChevronDown, Image } from "lucide-react";
 
 const FormField = ({ field, value, onChange }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -35,7 +35,7 @@ const FormField = ({ field, value, onChange }) => {
           name={field.name}
           value={value}
           onChange={onChange}
-          className="w-full h-12 p-2 border rounded-xl"
+          className="w-full h-12 p-2 border rounded-lg"
         />
       );
 
@@ -46,7 +46,7 @@ const FormField = ({ field, value, onChange }) => {
             name={field.name}
             value={value}
             onChange={onChange}
-            className="w-full h-12 p-2 border rounded-xl appearance-none"
+            className="w-full h-12 p-2 border rounded-lg appearance-none text-slate-400"
           >
             <option>{field.placeholder}</option>
             {field.options &&
@@ -57,7 +57,7 @@ const FormField = ({ field, value, onChange }) => {
               ))}
           </select>
           <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-            <ChevronRight className="w-4 h-4"/>
+            <ChevronDown className="w-4 h-4" />
           </div>
         </div>
       );
@@ -71,7 +71,7 @@ const FormField = ({ field, value, onChange }) => {
             value={dateValue}
             onFocus={handleDateFocus}
             onChange={handleDateChange}
-            className="w-full p-2 border rounded-xl"
+            className="w-full p-2 border rounded-lg"
           />
         </div>
       );
@@ -88,14 +88,14 @@ const FormField = ({ field, value, onChange }) => {
                 onChange={onChange}
                 className="mr-2"
               />
-              <span>{option}</span>
+              <span>{option}</span> 
             </label>
           ))}
         </div>
       );
     case "file":
       return (
-        <div className="border-2 border-dashed border-gray-300 p-4 rounded-xl">
+        <div className="border-2 border-dashed border-gray-300 p-4 rounded-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <Image className="mr-2 text-gray-400" size={50} alt="" />
@@ -129,7 +129,7 @@ const FormField = ({ field, value, onChange }) => {
           value={value}
           onChange={onChange}
           placeholder={field.placeholder}
-          className="w-full h-12 p-2 border rounded-xl"
+          className="w-full h-12 p-2 border rounded-lg"
         />
       );
     case "tel":
@@ -140,7 +140,7 @@ const FormField = ({ field, value, onChange }) => {
           value={value}
           onChange={onChange}
           placeholder={field.placeholder}
-          className="w-full h-12 p-2 border rounded-xl"
+          className="w-full h-12 p-2 border rounded-lg"
         />
       );
     default:
@@ -167,4 +167,4 @@ FormField.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default FormField;
+export default FormField;

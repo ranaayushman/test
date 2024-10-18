@@ -14,29 +14,34 @@ const Form = () => {
   };
 
   return (
-    <div className="w-full border bg-white rounded-md p-4 drop-shadow-custom">
-      <form className="flex">
-        <div className="w-full">
-          {formFields.map((section) => (
-            <div key={section.section} className="space-y-4">
-              {section.fields.map((field) => (
-                <div key={field.label}>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    {field.label}
-                  </label>
-                  <FormField
-                    field={field}
-                    value={formData[field.name] || ""}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </form>
+    <div className="flex bg-white drop-shadow-custom rounded-md">
+      <div className="bg-white pt-4 p-8 rounded-md">
+        <form className="flex">
+          <div className="w-full">
+            {formFields.map((section) => (
+              <div key={section.section} className="space-y-4">
+                <h3 className="text-lg my-4">
+                  {section.heading}
+                </h3>
+                {section.fields.map((field) => (
+                  <div key={field.label}>
+                    <label className="block text-md font-medium text-gray-700 mb-1">
+                      {field.label}
+                    </label>
+                    <FormField
+                      field={field}
+                      value={formData[field.name] || ""}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Form;
+export default Form;
