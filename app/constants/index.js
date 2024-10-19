@@ -47,6 +47,7 @@ export const formFields = [
         type: "select",
         placeholder: "Select CLASS",
         label: "CLASS to which admission sought:",
+        options: ["Class 1", "Class 2", "Class 3", "Class 4"],
       },
     ],
   },
@@ -155,6 +156,7 @@ export const formFields = [
         type: "select",
         placeholder: "Select Last Class Attended",
         label: "Last Class Attended:",
+        
       },
     ],
   },

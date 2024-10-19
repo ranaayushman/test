@@ -12,7 +12,7 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       dropShadow: {
-        custom: "0 0 29px rgba(0, 0, 0, 0.25)",
+        custom: "0 0 20px rgba(0, 0, 0, 0.08)",
       },
     },
   },

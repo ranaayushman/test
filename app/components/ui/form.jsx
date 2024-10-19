@@ -1,3 +1,4 @@
+// FormField.jsx
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { ChevronDown, Image, Upload } from "lucide-react";
@@ -5,7 +6,6 @@ import { ChevronDown, Image, Upload } from "lucide-react";
 const FormField = ({ field, value, onChange }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showDateInput, setShowDateInput] = useState(false);
-  const [dateValue, setDateValue] = useState(value);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -21,11 +21,6 @@ const FormField = ({ field, value, onChange }) => {
     setShowDateInput(true);
   };
 
-  const handleDateChange = (e) => {
-    setDateValue(e.target.value);
-    onChange(e);
-  };
-
   switch (field.type) {
     case "text":
       return (
@@ -33,7 +28,7 @@ const FormField = ({ field, value, onChange }) => {
           type="text"
           placeholder={field.placeholder}
           name={field.name}
-          value={value}
+          value={value || ""}
           onChange={onChange}
           className="w-full h-12 p-2 border-2 border-gray-600 rounded-lg text-[0.75rem]"
         />
@@ -44,11 +39,11 @@ const FormField = ({ field, value, onChange }) => {
         <div className="relative">
           <select
             name={field.name}
-            value={value}
+            value={value || ""}
             onChange={onChange}
             className="w-full h-12 p-2 border-2 text-[0.75rem] rounded-lg appearance-none text-slate-400 border-gray-600"
           >
-            <option>{field.placeholder}</option>
+            <option value="">{field.placeholder}</option>
             {field.options &&
               field.options.map((option) => (
                 <option key={option} value={option}>
@@ -68,9 +63,9 @@ const FormField = ({ field, value, onChange }) => {
             type={showDateInput ? "date" : "text"}
             name={field.name}
             placeholder={field.placeholder}
-            value={dateValue}
+            value={value || ""}
             onFocus={handleDateFocus}
-            onChange={handleDateChange}
+            onChange={onChange}
             className="w-full p-2 h-12 border-2 border-gray-600 rounded-lg"
           />
         </div>
@@ -98,7 +93,7 @@ const FormField = ({ field, value, onChange }) => {
         <div className="border-2 border-dashed border-gray-600 p-4 rounded-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <Image className="mr-2 text-gray-400" size={50} alt="" />
+              <Image className="mr-2 text-gray-400" size={50} />
               <span className="text-sm text-gray-500">
                 {selectedFile ? selectedFile.name : field.placeholder}
               </span>
@@ -126,10 +121,10 @@ const FormField = ({ field, value, onChange }) => {
         <input
           type="email"
           name={field.name}
-          value={value}
+          value={value || ""}
           onChange={onChange}
           placeholder={field.placeholder}
-          className="w-full h-12 p-2 border rounded-lg"
+          className="w-full h-12 p-2 border-2 border-gray-600 rounded-lg"
         />
       );
     case "tel":
@@ -137,7 +132,7 @@ const FormField = ({ field, value, onChange }) => {
         <input
           type="tel"
           name={field.name}
-          value={value}
+          value={value || ""}
           onChange={onChange}
           placeholder={field.placeholder}
           className="w-full h-12 p-2 border-2 border-gray-600 rounded-lg"
@@ -183,9 +178,10 @@ FormField.propTypes = {
       "file",
       "email",
       "tel",
+      "upload"
     ]).isRequired,
     placeholder: PropTypes.string,
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),

@@ -1,20 +1,53 @@
-const SelectField = ({ label, options, name }) => (
-  <div className="mb-4 w-1/2">
-    <label className="block text-sm font-medium mb-1">{label}</label>
-    <select
-      name={name}
-      className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-    >
-      <option value="" disabled selected>
-        Select {label}
-      </option>
-      {options.map((option, idx) => (
-        <option key={idx} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  </div>
-);
+import React from "react";
+import PropTypes from "prop-types";
+import { ChevronDown } from "lucide-react";
+
+const SelectField = ({
+  label,
+  placeholder,
+  name,
+  value,
+  options,
+  onChange,
+  className,
+}) => {
+  return (
+    <div className="mb-4">
+      <label htmlFor={name} className="block text-lg font-medium text-black mb-1">
+        {label}
+      </label>
+      <div className="relative">
+        <select
+          id={name}
+          name={name}
+          value={value || ""}
+          onChange={onChange}
+          className={`w-full h-12 p-2 border-2 text-[0.75rem] rounded-lg appearance-none text-slate-400 border-gray-600 ${className}`}
+        >
+          <option value="">{placeholder}</option>
+          {options &&
+            options.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+        </select>
+        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+          <ChevronDown className="w-4 h-4" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+SelectField.propTypes = {
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
 
 export default SelectField;
