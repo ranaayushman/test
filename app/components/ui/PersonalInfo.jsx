@@ -7,13 +7,31 @@ import React, { useState } from "react";
 
 const PersonalInfo = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    date: "",
-    selectedOption: "",
-    document: null,
-    selectedOption2: "",
+    serialNo: "",
+    class: "",
+    admissionDate: "",
+    session: "",
+    fullName: "",
+    profilePicture: null,
+    gender: "",
+    dob: "",
   });
+
+  // Predefined options for select fields
+  const classOptions = [
+    "Class 1",
+    "Class 2",
+    "Class 3",
+    "Class 4",
+    "Class 5",
+    "Class 6",
+    "Class 7",
+    "Class 8",
+    "Class 9",
+    "Class 10",
+  ];
+
+  const sessionOptions = ["2023", "2024", "2025"];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,22 +40,42 @@ const PersonalInfo = () => {
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
-    setFormData({ ...formData, [name]: files[0] }); // handle file upload
+    if (files && files[0]) {
+      if (files[0].size > 2 * 1024 * 1024) {
+        alert("File size should not exceed 2MB");
+        e.target.value = null;
+        return;
+      }
+      setFormData({ ...formData, [name]: files[0] });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create a new FormData instance
     const formDataToSend = new FormData();
+    const requiredFields = [
+      "serialNo",
+      "class",
+      "admissionDate",
+      "session",
+      "fullName",
+      "gender",
+      "dob",
+    ];
+    const missingFields = requiredFields.filter((field) => !formData[field]);
 
-    // Append form data
-    for (const key in formData) {
-      formDataToSend.append(key, formData[key]);
+    if (missingFields.length > 0) {
+      alert(`Please fill in all required fields: ${missingFields.join(", ")}`);
+      return;
     }
+    Object.keys(formData).forEach((key) => {
+      if (formData[key] !== null) {
+        formDataToSend.append(key, formData[key]);
+      }
+    });
 
     try {
-      // API call to submit form data
       const response = await fetch("https://example.com/api/submit", {
         method: "POST",
         body: formDataToSend,
@@ -47,66 +85,100 @@ const PersonalInfo = () => {
         const data = await response.json();
         console.log("Form Data Submitted Successfully:", data);
         alert("Form submitted successfully");
+        setFormData({
+          serialNo: "",
+          class: "",
+          admissionDate: "",
+          session: "",
+          fullName: "",
+          profilePicture: null,
+          gender: "",
+          dob: "",
+        });
       } else {
-        console.error("Error submitting form", response);
+        alert("Error submitting form. Please try again.");
       }
     } catch (error) {
       console.error("Error during API call:", error);
+      alert("An error occurred while submitting the form. Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="">
-      <div className="w-1/2">
+    <form onSubmit={handleSubmit} className="p-2 w-1/2">
+      <div className="space-y-6">
         <InputField
           placeholder="Enter Serial No"
-          name="name"
-          value={formData.name}
+          name="serialNo"
+          value={formData.serialNo}
           onChange={handleChange}
           label="Serial No:"
-          className=""
+          required
         />
-        <DateField
-          label="CLASS to which admission sought:"
-          className="w-1/4"
-          onChange={handleChange}
-          placeholder="Admission Date"
-        />
-        <div className="grid grid-cols-2 w-full gap-x-4">
-          <DateField label="Admission Date:" onChange={handleChange} />
+
+        <div className="grid grid-cols-2 gap-x-4">
           <SelectField
-            className=""
+            label="CLASS to which admission sought:"
+            name="class"
+            value={formData.class}
             onChange={handleChange}
+            options={classOptions}
+            placeholder="Select Class"
+            required
+          />
+        </div>
+
+        <div className="grid grid-cols-2 gap-x-4">
+          <DateField
+            label="Admission Date:"
+            name="admissionDate"
+            value={formData.admissionDate}
+            onChange={handleChange}
+            required
+          />
+          <SelectField
             label="Session:"
             name="session"
             value={formData.session}
-            options={["2023", "2024", "2025"]}
+            onChange={handleChange}
+            options={sessionOptions}
+            placeholder="Select Session"
+            required
           />
         </div>
+
         <InputField
-          label="Name:"
+          label="Full Name:"
+          placeholder="Enter Full Name"
           name="fullName"
           value={formData.fullName}
           onChange={handleChange}
+          required
         />
+
         <FileUploadField
           label="Profile Picture"
           name="profilePicture"
           onChange={handleFileChange}
+          accept="image/*"
+          placeholder="Upload a profile picture (maximum 2MB)"
         />
-        <div className="grid grid-cols-2 w-full">
+        <div className="grid grid-cols-2 gap-x-16">
           <RadioField
             label="Gender:"
             name="gender"
             value={formData.gender}
-            options={["Male", "Female", "Other"]}
+            options={["Male", "Female", "Transgender"]}
             onChange={handleChange}
+            required
           />
           <DateField
-            label="Date of Birth"
+            label="Date of Birth:"
             name="dob"
             value={formData.dob}
             onChange={handleChange}
+            required
+            className="border-0 border-b rounded-none"
           />
         </div>
       </div>

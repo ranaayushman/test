@@ -24,33 +24,35 @@ const Stream = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    // You can add logic to send the form data to an API or process it as needed
+   
   };
   return (
     <form onSubmit={handleChange}>
       <div className="grid grid-cols-5 gap-x-4">
-        <SelectField label="Stream:" />
-        <SelectField label="Section:" />
-        <SelectField label="Roll No:" />
+        <SelectField label="Stream:" placeholder="Select Stream" />
+        <SelectField label="Section:" placeholder="Select Section" />
+        <SelectField label="Roll No:" placeholder="Enter Roll No" />
       </div>
       <div className="grid grid-cols-5 gap-x-4">
-        <SelectField label="Religion:" />
-        <SelectField label="Blood Group:" />
-        <InputField label="Mother Tongue:" />
+        <SelectField label="Religion:" placeholder="Select Religion" />
+        <SelectField label="Blood Group:" placeholder="Select Blood Group" />
+        <InputField label="Mother Tongue:" placeholder="Enter Mother Tongue" />
       </div>
       <div className="grid grid-cols-5 gap-x-4">
-        <SelectField label="Height:" />
-        <SelectField label="Weight:" />
-        <InputField label="P.O.:" />
+        <SelectField label="Height:" placeholder="Select Height" />
+        <SelectField label="Weight:" placeholder="Select Weight" />
+        <InputField label="P.O.:" placeholder="Enter P.O." />
       </div>
       <div className="grid grid-cols-5 gap-x-4">
-        <InputField label="P.S.:" />
-        <InputField label="Pincode:" />
-        <InputField label="District:" />
+        <InputField label="P.S.:" placeholder="Enter P.S." />
+        <InputField label="Pincode:" placeholder="Enter Pincode" />
+        <InputField label="District:" placeholder="Enter District" />
       </div>
       <div className="grid grid-cols-5 gap-x-4">
-        <InputField label="Second Language:" />
+        <InputField
+          label="Second Language:"
+          placeholder="Enter Second Language"
+        />
       </div>
     </form>
   );

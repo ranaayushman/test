@@ -13,7 +13,7 @@ const SelectField = ({
 }) => {
   return (
     <div className="mb-4">
-      <label htmlFor={name} className="block text-lg font-medium text-black mb-1">
+      <label htmlFor={name} className="block text-sm font-medium text-black mb-1">
         {label}
       </label>
       <div className="relative">
@@ -22,7 +22,7 @@ const SelectField = ({
           name={name}
           value={value || ""}
           onChange={onChange}
-          className={`w-full h-12 p-2 border-2 text-[0.75rem] rounded-lg appearance-none text-slate-400 border-gray-600 ${className}`}
+          className={`w-full h-12 p-2 border text-sm rounded-lg appearance-none text-slate-400 border-gray-600 ${className}`}
         >
           <option value="">{placeholder}</option>
           {options &&

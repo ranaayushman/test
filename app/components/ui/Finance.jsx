@@ -31,15 +31,15 @@ const Finance = () => {
     <form onSubmit={handleChange}>
       <h2>Financial Resources of Parents/Guardian: </h2>
       <div className="grid grid-cols-4 gap-x-4 mt-[20px]">
-        <InputField label="Relation With Guardian:" />
-        <InputField label="Monthly Income:" />
+        <InputField label="Relation With Guardian:" placeholder="Relation" />
+        <InputField label="Monthly Income:" placeholder="Income in Rupees"/>
       </div>
       <div className="grid grid-cols-4 gap-x-4">
-        <InputField label="Relation With Guardian:" />
-        <SelectField label="Monthly Income:" />
+        <InputField label="Relation With Guardian:" placeholder="Designation"/>
+        <SelectField label="Monthly Income:" placeholder="Select Number"/>
       </div>
       <div className="grid grid-cols-4 gap-x-4">
-        <SelectField label="No. of Earning Members in the Family:" />
+        <SelectField label="No. of Earning Members in the Family:" placeholder="Select Number"/>
       </div>
     </form>
   );

@@ -21,7 +21,7 @@ const NewForm = () => {
       <Finance />
       <button
         type="submit"
-        className="px-4 py-2 bg-blue-500 text-white rounded"
+        className="px-4 py-2 bg-[#789336] w-1/3 text-white rounded-md mt-10 h-12"
       >
         Submit
       </button>

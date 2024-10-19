@@ -11,7 +11,7 @@ const RadioField = ({
 }) => {
   return (
     <div className={`mb-4 ${className}`}>
-      <label className="block text-lg font-medium text-black mb-2">
+      <label className="block text-sm font-medium text-black mb-2">
         {label}
       </label>
       <div className="flex flex-row gap-x-4">
@@ -24,7 +24,7 @@ const RadioField = ({
                 value={option}
                 checked={value === option}
                 onChange={onChange}
-                className="mr-2"
+                className="mr-2 h-12"
               />
               <span>{option}</span>
             </label>

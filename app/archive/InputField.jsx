@@ -1,11 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const InputField = ({ label, placeholder, name, value, onChange }) => {
   return (
     <div className="mb-4">
       {label && (
-        <label htmlFor={name} className="block text-xl font-medium text-black mb-1">
+        <label
+          htmlFor={name}
+          className="block text-sm font-medium text-black mb-1"
+        >
           {label}
         </label>
       )}
@@ -16,14 +19,14 @@ const InputField = ({ label, placeholder, name, value, onChange }) => {
         name={name}
         value={value || ""}
         onChange={onChange}
-        className="w-full h-12 p-2 border-2 border-gray-600 rounded-lg text-[0.75rem]"
+        className="w-full h-12 p-2 border border-gray-600 rounded-lg text-sm"
       />
     </div>
   );
 };
 
 InputField.propTypes = {
-  label: PropTypes.string, 
+  label: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,

@@ -20,7 +20,7 @@ const DocUpload = ({ label, placeholder, name, onChange, className }) => {
           {label}
         </label>
       )}
-      <div className="border-2 border-gray-600 p-4 rounded-lg">
+      <div className="border border-gray-600 p-4 rounded-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <span className="text-[0.75rem] text-gray-500">

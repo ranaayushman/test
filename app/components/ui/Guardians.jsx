@@ -30,21 +30,36 @@ const Guardians = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="w-1/2">
-        <InputField label="Father/Guardian’s Name:" />
-        <InputField label="Father/Guardian’s Residential Address:" />
-        <InputField label="Father/Guardian’s Occupation:" />
-        <InputField label="Mother’s Name:" />
-        <InputField label="Mother’s Residential Address:" />
-        <InputField label="Mother’s Occupation:" />
+        <InputField
+          label="Father/Guardian’s Name:"
+          placeholder="Father/Guardian’s Name"
+        />
+        <InputField
+          label="Father/Guardian’s Residential Address:"
+          placeholder="Father/Guardian’s Residential Address"
+        />
+        <InputField
+          label="Father/Guardian’s Occupation:"
+          placeholder="Father/Guardian’s Occupation"
+        />
+        <InputField label="Mother’s Name:" placeholder="Mother’s Name" />
+        <InputField
+          label="Mother’s Residential Address:"
+          placeholder="Enter Mother’s Residential Address"
+        />
+        <InputField
+          label="Mother’s Occupation:"
+          placeholder="Mother’s Occupation"
+        />
       </div>
       <div className="flex gap-x-5">
         <RadioField label="Only Child:" options={["Yes", "No"]} />
-        <div className="border h-14"></div>
+        <div className="border h-16"></div>
         <RadioField
           label="Category:"
           options={["General", "SC", "ST", "OBC", "EWS(Attach Proof)"]}
         />
-        <div className="border h-14"></div>
+        <div className="border h-16"></div>
         <RadioField label="Specially Abled:" options={["Yes", "No"]} />
       </div>
     </form>

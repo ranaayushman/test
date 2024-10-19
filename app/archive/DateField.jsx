@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+import { cn } from "@/lib/utils";
 
 const DateField = ({
   label,
@@ -20,7 +20,7 @@ const DateField = ({
       {label && (
         <label
           htmlFor={name}
-          className="block text-lg font-medium text-black mb-1"
+          className="block text-sm font-medium text-black mb-1"
         >
           {label}
         </label>
@@ -34,20 +34,14 @@ const DateField = ({
           value={value || ""}
           onFocus={handleDateFocus}
           onChange={onChange}
-          className={`w-full p-2 h-12 border-2 border-gray-600 rounded-lg ${className}`}
+          className={cn(
+            "w-full p-2 h-12 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+            className
+          )}
         />
       </div>
     </div>
   );
-};
-
-DateField.propTypes = {
-  label: PropTypes.string,
-  placeholder: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  className: PropTypes.string,
 };
 
 export default DateField;
