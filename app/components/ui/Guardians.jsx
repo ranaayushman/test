@@ -19,12 +19,29 @@ const Guardians = () => {
   });
 
   const disabilityOptions = [
-    "Visual Impairment",
-    "Hearing Impairment",
-    "Physical Disability",
-    "Speech and Language Disability",
-    "Intellectual Disability",
-    "Multiple Disabilities",
+    "NA : -Not Applicable-",
+    "BB : Blindness",
+    "BL : Low Vision",
+    "CA : Autism spectrum disorder",
+    "CS : Specific Learning Disabilities",
+    "DD : Deaf",
+    "DH : Hard of hearing",
+    "DS : Speech and Language Disability",
+    "HA : Acid Attack Victims",
+    "HC : Cerebral palsy",
+    "HD : Dwarfism",
+    "HL : Leprosy cured persons",
+    "HM : Muscular Dystrophy",
+    "LA : Permanent Physical Impairment Amputation",
+    "LE : Permanent Physical Impairment of Extremities",
+    "LF : PPI Club Food and Other Conditions",
+    "LL : Spinal Cord injuries",
+    "LN : PPI due to Chronic neurological condition",
+    "LS : PPI of the Spine",
+    "SB : Blood disorder",
+    "SD : Multiple Disabilities",
+    "SM : Mental Behaviour",
+    "SN : Chronic Neurological",
   ];
 
   const handleChange = (e) => {
@@ -108,7 +125,7 @@ const Guardians = () => {
         <RadioField
           label="Category:"
           name="category"
-          options={["General", "SC", "ST", "OBC", "EWS(Attach Proof)"]}
+          options={["General", "SC", "ST", "OBC", "EWS (Attach Proof)"]}
           value={formData.category}
           onChange={handleChange}
         />
