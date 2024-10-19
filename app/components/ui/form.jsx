@@ -35,7 +35,7 @@ const FormField = ({ field, value, onChange }) => {
           name={field.name}
           value={value}
           onChange={onChange}
-          className="w-full h-12 p-2 border rounded-lg text-[0.75rem]"
+          className="w-full h-12 p-2 border-2 border-gray-600 rounded-lg text-[0.75rem]"
         />
       );
 
@@ -46,7 +46,7 @@ const FormField = ({ field, value, onChange }) => {
             name={field.name}
             value={value}
             onChange={onChange}
-            className="w-full h-12 p-2 border text-[0.75rem] rounded-lg appearance-none text-slate-400"
+            className="w-full h-12 p-2 border-2 text-[0.75rem] rounded-lg appearance-none text-slate-400 border-gray-600"
           >
             <option>{field.placeholder}</option>
             {field.options &&
@@ -71,7 +71,7 @@ const FormField = ({ field, value, onChange }) => {
             value={dateValue}
             onFocus={handleDateFocus}
             onChange={handleDateChange}
-            className="w-full p-2 h-12 border rounded-lg"
+            className="w-full p-2 h-12 border-2 border-gray-600 rounded-lg"
           />
         </div>
       );
@@ -95,7 +95,7 @@ const FormField = ({ field, value, onChange }) => {
       );
     case "file":
       return (
-        <div className="border-2 border-dashed border-gray-300 p-4 rounded-lg">
+        <div className="border-2 border-dashed border-gray-600 p-4 rounded-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <Image className="mr-2 text-gray-400" size={50} alt="" />
@@ -140,15 +140,15 @@ const FormField = ({ field, value, onChange }) => {
           value={value}
           onChange={onChange}
           placeholder={field.placeholder}
-          className="w-full h-12 p-2 border rounded-lg"
+          className="w-full h-12 p-2 border-2 border-gray-600 rounded-lg"
         />
       );
     case "upload":
       return (
-        <div className="border-2 border-gray-300 p-4 rounded-lg">
+        <div className="border-2 border-gray-600 p-4 rounded-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <span className="text-sm text-gray-500">
+              <span className="text-[0.75rem] text-gray-500">
                 {selectedFile ? selectedFile.name : field.placeholder}
               </span>
             </div>

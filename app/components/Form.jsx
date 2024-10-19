@@ -4,31 +4,31 @@ import { formFields } from "../constants";
 
 const indexStyle = (id) => {
   const styleMap = {
-    0: "w-full", //Serial No:
-    1: "w-1/2", //CLASS to which admission sought:
-    2: "flex gap-4", //Admission Date
-    3: "flex flex-col gap-6", //Name:
-    4: "grid grid-cols-2 gap-4", //Gender*
-    5: "flex flex-col gap-6", // Father/Guardian’s Name:
-    6: "flex", //Only Child:
+    0: "", //Serial No:
+    1: "w-1/4", //CLASS to which admission sought:
+    2: "flex gap-4 w-1/2", //Admission Date
+    3: "flex flex-col gap-6 w-1/2", //Name:
+    4: "grid grid-cols-2 gap-10 w-1/2 items-center", //Gender*
+    5: "flex flex-col gap-6 w-1/2", // Father/Guardian’s Name:
+    6: "flex gap-4 items-center w-1/2 gap-x-10", //Only Child:
     7: "w-1/2", //Last Class Attended:
     8: "", //
     9: "flex gap-4", //Result of last Class:
-    10: "flex gap-4", //Transfer Certificate Details*:
-    11: "flex gap-4", //Details of siblings (if any) :-
-    12: "grid grid-cols-3 gap-4", //Stream:
-    13: "grid grid-cols-3 gap-4", //Select Religion
-    14: "grid grid-cols-3 gap-4", //Height:
-    15: "grid grid-cols-3 gap-4", //P.S:
-    16: "grid grid-cols-4 gap-4", //Second Language:
-    17: "grid grid-cols-3 gap-4", //Subjects:
-    18: "grid grid-cols-3 gap-4", //Phone No:
-    19: "grid grid-cols-1 gap-4", //Email:
-    20: "grid grid-cols-2 gap-4", //Documents Required:
-    21: "grid grid-cols-2 gap-4", //Financial Resources of Parents/Guardian:
+    10: "flex gap-4 w-1/2", //Transfer Certificate Details*:
+    11: "grid grid-cols-6 gap-4 text-center", //Details of siblings (if any) :-
+    12: "grid grid-cols-3 gap-4 w-1/2", //Stream:
+    13: "grid grid-cols-3 gap-4 w-1/2", //Select Religion
+    14: "grid grid-cols-3 gap-4 w-1/2", //Height:
+    15: "grid grid-cols-3 gap-4 w-1/2", //P.S:
+    16: "grid grid-cols-3 gap-4 w-1/2", //Second Language:
+    17: "grid grid-cols-3 gap-4 w-1/2", //Subjects:
+    18: "grid grid-cols-3 gap-4 w-1/2", //Phone No:
+    19: "grid grid-cols-1 gap-4 w-1/2", //Email:
+    20: "grid grid-cols-2 gap-4 w-1/2 text-[0.5rem]", //Documents Required:
+    21: "grid grid-cols-2 gap-4 w-1/2", //Financial Resources of Parents/Guardian:
   };
 
-  return styleMap[id] || "w-full";
+  return styleMap[id] || "w-1/2";
 };
 
 const smallText = (sectionId, placeholder) => {
@@ -70,10 +70,7 @@ const Form = () => {
                     <FormField
                       field={field}
                       value={formData[field.name] || ""}
-                      placeholder={smallText(
-                        section.id,
-                        field.placeholder
-                      )}
+                      placeholder={smallText(section.id, field.placeholder)}
                       onChange={handleInputChange}
                       className={section.id === 9 ? "text-sm" : ""}
                     />
@@ -83,11 +80,10 @@ const Form = () => {
             </div>
           ))}
         </form>
-        <button className="bg-[#789336] w-3/4 h-12 m-6 ml-0 rounded-md text-white">
+        <button className="bg-[#789336] w-1/3 h-12 m-6 ml-0 rounded-md text-white">
           Submit
         </button>
       </div>
-      <div className="w-1/2"></div>
     </div>
   );
 };

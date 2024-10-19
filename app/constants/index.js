@@ -141,10 +141,11 @@ export const formFields = [
       {
         type: "radio",
         name: "Category",
-        options: ["General", "SC", "ST", "OBC", "EWS (Attach Proof)"],
+        options: ["General", "SC", "ST", "OBC", "EWS(proof)"],
         label: "Category",
         required: true,
       },
+    
     ],
   },
   {
