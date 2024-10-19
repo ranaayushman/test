@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { ChevronDown, Image } from "lucide-react";
+import { ChevronDown, Image, Upload } from "lucide-react";
 
 const FormField = ({ field, value, onChange }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -35,7 +35,7 @@ const FormField = ({ field, value, onChange }) => {
           name={field.name}
           value={value}
           onChange={onChange}
-          className="w-full h-12 p-2 border rounded-lg"
+          className="w-full h-12 p-2 border rounded-lg text-[0.75rem]"
         />
       );
 
@@ -46,7 +46,7 @@ const FormField = ({ field, value, onChange }) => {
             name={field.name}
             value={value}
             onChange={onChange}
-            className="w-full h-12 p-2 border rounded-lg appearance-none text-slate-400"
+            className="w-full h-12 p-2 border text-[0.75rem] rounded-lg appearance-none text-slate-400"
           >
             <option>{field.placeholder}</option>
             {field.options &&
@@ -71,7 +71,7 @@ const FormField = ({ field, value, onChange }) => {
             value={dateValue}
             onFocus={handleDateFocus}
             onChange={handleDateChange}
-            className="w-full p-2 border rounded-lg"
+            className="w-full p-2 h-12 border rounded-lg"
           />
         </div>
       );
@@ -79,7 +79,7 @@ const FormField = ({ field, value, onChange }) => {
       return (
         <div className="flex flex-row gap-x-4">
           {field.options.map((option) => (
-            <label key={option} className="flex items-center">
+            <label key={option} className="flex items-center text-sm">
               <input
                 type="radio"
                 name={field.name}
@@ -88,7 +88,7 @@ const FormField = ({ field, value, onChange }) => {
                 onChange={onChange}
                 className="mr-2"
               />
-              <span>{option}</span> 
+              <span>{option}</span>
             </label>
           ))}
         </div>
@@ -142,6 +142,31 @@ const FormField = ({ field, value, onChange }) => {
           placeholder={field.placeholder}
           className="w-full h-12 p-2 border rounded-lg"
         />
+      );
+    case "upload":
+      return (
+        <div className="border-2 border-gray-300 p-4 rounded-lg">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <span className="text-sm text-gray-500">
+                {selectedFile ? selectedFile.name : field.placeholder}
+              </span>
+            </div>
+            <label
+              htmlFor={`file-upload-${field.name}`}
+              className="cursor-pointer"
+            >
+              <Upload />
+            </label>
+          </div>
+          <input
+            id={`file-upload-${field.name}`}
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="hidden"
+          />
+        </div>
       );
     default:
       return null;
