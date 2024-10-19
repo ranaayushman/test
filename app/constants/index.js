@@ -31,27 +31,44 @@ export const Menus = [
 
 export const formFields = [
   {
+    id: 0,
     fields: [
       {
         type: "text",
         placeholder: "Enter Serial No",
         label: "Serial No:",
       },
+    ],
+  },
+  {
+    id: 1,
+    fields: [
       {
         type: "select",
         placeholder: "Select CLASS",
         label: "CLASS to which admission sought:",
       },
+    ],
+  },
+
+  {
+    id: 2,
+    fields: [
       {
         type: "date",
         placeholder: "Select Date",
         label: "Admission Date",
       },
       {
-        type: "date",
+        type: "select",
         placeholder: "Select Session",
         label: "Session:",
       },
+    ],
+  },
+  {
+    id: 3,
+    fields: [
       {
         type: "text",
         placeholder: "Enter Your Full Name",
@@ -62,6 +79,11 @@ export const formFields = [
         placeholder: "Upload a profile picture maximum 2MB",
         label: "Profile Picture",
       },
+    ],
+  },
+  {
+    id: 4,
+    fields: [
       {
         type: "radio",
         name: "Gender:",
@@ -74,6 +96,11 @@ export const formFields = [
         placeholder: "dd/mm/yyy",
         label: "Date of Birth:",
       },
+    ],
+  },
+  {
+    id: 5,
+    fields: [
       {
         type: "text",
         placeholder: "Father/Guardian’s Name",
@@ -95,6 +122,16 @@ export const formFields = [
         label: "Mother’s Residential Address:",
       },
       {
+        type: "text",
+        placeholder: "Mother’s Occupation",
+        label: "Mother’s Occupation",
+      },
+    ],
+  },
+  {
+    id: 6,
+    fields: [
+      {
         type: "radio",
         name: "Only Child",
         options: ["Yes", "No"],
@@ -104,15 +141,25 @@ export const formFields = [
       {
         type: "radio",
         name: "Category",
-        options: ["General", "SC", "ST", "OBC", "EWS (Attach Proof)"],
+        options: ["General", "SC", "ST", "OBC", "EWS(proof)"],
         label: "Category",
         required: true,
       },
+    
+    ],
+  },
+  {
+    id: 7,
+    fields: [
       {
         type: "select",
         placeholder: "Select Last Class Attended",
         label: "Last Class Attended:",
       },
+    ],
+  },
+  {
+    fields: [
       {
         type: "radio",
         name: "Last School affiliated is:",
@@ -129,6 +176,7 @@ export const formFields = [
     ],
   },
   {
+    id: 9,
     heading: "Result of last Class:",
     fields: [
       {
@@ -159,6 +207,7 @@ export const formFields = [
     ],
   },
   {
+    id: 10,
     heading: "Transfer Certificate Details*:",
     fields: [
       {
@@ -174,6 +223,7 @@ export const formFields = [
     ],
   },
   {
+    id: 11,
     heading: "Details of siblings (if any) :-",
     fields: [
       {
@@ -199,6 +249,7 @@ export const formFields = [
     ],
   },
   {
+    id: 12,
     fields: [
       {
         type: "select",
@@ -218,6 +269,7 @@ export const formFields = [
     ],
   },
   {
+    id: 13,
     fields: [
       {
         type: "select",
@@ -237,6 +289,7 @@ export const formFields = [
     ],
   },
   {
+    id: 14,
     fields: [
       {
         type: "select",
@@ -256,6 +309,7 @@ export const formFields = [
     ],
   },
   {
+    id: 15,
     fields: [
       {
         type: "text",
@@ -275,6 +329,7 @@ export const formFields = [
     ],
   },
   {
+    id: 16,
     fields: [
       {
         type: "text",
@@ -284,7 +339,8 @@ export const formFields = [
     ],
   },
   {
-    heading : "Subjects:",
+    id: 17,
+    heading: "Subjects:",
     fields: [
       {
         type: "select",
@@ -324,8 +380,9 @@ export const formFields = [
     ],
   },
   {
-    heading : "Phone No:",
-    fields : [
+    id: 18,
+    heading: "Phone No:",
+    fields: [
       {
         type: "text",
         placeholder: "Primary No.",
@@ -341,10 +398,11 @@ export const formFields = [
         placeholder: "Optional No.",
         label: "",
       },
-     ],
+    ],
   },
   {
-    fields : [
+    id: 19,
+    fields: [
       {
         type: "text",
         placeholder: "Email",
@@ -358,17 +416,59 @@ export const formFields = [
     ],
   },
   {
-    heading : "Documents Required:",
-    fields : [
+    id: 20,
+    heading: "Documents Required:",
+    fields: [
       {
         type: "upload",
         placeholder: "Upload Birth Certificate",
         label: "Birth Certificate:",
       },
       {
+        type: "upload",
+        placeholder: "Upload Transfer Certificate",
+        label: "Transfer Certificate:",
+      },
+      {
+        type: "upload",
+        placeholder: "Upload Migration Certificate",
+        label: "Migration Certificate:",
+      },
+      {
+        type: "upload",
+        placeholder: "Upload Mark Sheet",
+        label: "Mark Sheet:",
+      },
+    ],
+  },
+  {
+    id: 21,
+    heading: "Financial Resources of Parents/Guardian:",
+    fields: [
+      {
         type: "text",
-        placeholder: "Permanent/Local Address",
-        label: "Permanent/Local Address:",
+        placeholder: "Relation",
+        label: "Relation With Guardian:",
+      },
+      {
+        type: "text",
+        placeholder: "Income in Rupees",
+        label: "Monthly Income:",
+      },
+      {
+        type: "text",
+        placeholder: "Designation",
+        label: "Designation:",
+      },
+      {
+        type: "select",
+        placeholder: "Select Number",
+        label: "No. of Dependents on the Guardians:",
+      },
+      {
+        type: "select",
+        placeholder: "Select Number",
+        label: "No. of Earning Members in the Family:",
       },
     ],
   },
