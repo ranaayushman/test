@@ -1,7 +1,7 @@
 
 // Form.jsx
 import React, { useState } from "react";
-import FormField from "./ui/form";
+import FormField from "../archive/FormFiled";
 import { formFields } from "../constants";
 
 const indexStyle = (id) => {

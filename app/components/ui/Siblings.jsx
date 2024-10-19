@@ -1,43 +1,66 @@
-import InputField from "@/app/archive/InputField";
-import SelectField from "@/app/archive/SelectField";
+import InputField from "@/app/components/ui/InputField";
+import SelectField from "@/app/components/ui/SelectField";
 import React, { useState } from "react";
 
 const Siblings = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    date: "",
-    selectedOption: "",
-    document: null,
-    selectedOption2: "",
+    siblings: [
+      {
+        name: "",
+        relation: "",
+        age: "",
+        school: "",
+      },
+    ],
   });
 
-  const handleChange = (e) => {
+  const handleSiblingChange = (index, e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleFileChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const updatedSiblings = [...formData.siblings];
+    updatedSiblings[index][name] = value;
+    setFormData({ ...formData, siblings: updatedSiblings });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-   
   };
+
   return (
-    <form onSubmit={handleChange}>
-      <div>
-        <h2 className="my-[20px]">Details of siblings (if any) :-</h2>
-        <div className="grid grid-cols-5 gap-x-4">
-          <InputField label="Name" placeholder="Enter Name"/>
-          <InputField label="Relation" placeholder="Relation"/>
-          <SelectField label="Age" placeholder="Select Age"/>
-          <InputField label="School Studying in"  placeholder="School Studying in"/>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <h2 className="my-5">Details of siblings (if any):</h2>
+      {formData.siblings.map((sibling, index) => (
+        <div key={index} className="grid grid-cols-5 gap-4">
+          <InputField
+            label="Name"
+            placeholder="Enter Name"
+            name="name"
+            value={sibling.name}
+            onChange={(e) => handleSiblingChange(index, e)}
+          />
+          <InputField
+            label="Relation"
+            placeholder="Relation"
+            name="relation"
+            value={sibling.relation}
+            onChange={(e) => handleSiblingChange(index, e)}
+          />
+          <SelectField
+            label="Age"
+            placeholder="Select Age"
+            name="age"
+            value={sibling.age}
+            onChange={(e) => handleSiblingChange(index, e)}
+          />
+          <InputField
+            label="School Studying in"
+            placeholder="School Studying in"
+            name="school"
+            value={sibling.school}
+            onChange={(e) => handleSiblingChange(index, e)}
+          />
         </div>
-      </div>
+      ))}
     </form>
   );
 };

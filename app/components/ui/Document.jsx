@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DocUpload from "@/app/archive/DocUpload";
+import DocUpload from "@/app/components/ui/DocUpload";
 
 const Document = () => {
   const [formData, setFormData] = useState({
