@@ -25,7 +25,7 @@ const Guardians = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-    // You can add logic to send the form data to an API or process it as needed
+
   };
   return (
     <form onSubmit={handleSubmit}>

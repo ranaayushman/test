@@ -31,7 +31,10 @@ const FileUploadField = ({ label, placeholder, name, onChange, className }) => {
 
   return (
     <div className={`mb-4 ${className}`}>
-      <label htmlFor={`file-upload-${name}`} className="block text-sm font-medium text-gray-700 mb-2">
+      <label
+        htmlFor={`file-upload-${name}`}
+        className="block text-sm font-medium text-gray-700 mb-2"
+      >
         {label}
       </label>
       <div className="border-2 border-dashed border-gray-600 p-4 rounded-lg">
