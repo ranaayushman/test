@@ -148,10 +148,6 @@ const School = () => {
           />
         </div>
       </div>
-
-      <button type="submit" className="btn-primary">
-        Submit
-      </button>
     </form>
   );
 };

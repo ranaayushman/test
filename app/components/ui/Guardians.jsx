@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import InputField from "@/app/components/ui/InputField";
 import RadioField from "@/app/components/ui/RadioField";
+import DocUpload from "@/app/components/ui/DocUpload";
 
 const Guardians = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const Guardians = () => {
     category: "",
     speciallyAbled: "",
     disabilityType: "",
+    categoryDocument: null,
   });
 
   const disabilityOptions = [
@@ -32,6 +34,13 @@ const Guardians = () => {
       [name]: value,
       ...(name === "speciallyAbled" &&
         value === "No" && { disabilityType: "" }),
+    }));
+  };
+
+  const handleFileChange = (file) => {
+    setFormData((prev) => ({
+      ...prev,
+      categoryDocument: file,
     }));
   };
 
@@ -131,6 +140,18 @@ const Guardians = () => {
               </option>
             ))}
           </select>
+        </div>
+      )}
+
+      {formData.category !== "General" && formData.category !== "" && (
+        <div className="mt-4 w-1/3">
+          <DocUpload
+            label="Upload Category Proof (PDF Only):"
+            accept=".pdf"
+            onChange={handleFileChange}
+            value={formData.categoryDocument}
+            placeholder="Upload PDF"
+          />
         </div>
       )}
     </form>
