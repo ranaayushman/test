@@ -49,7 +49,7 @@ const School = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="">
       <div className="w-1/2">
         <SelectField
           label="Last Class Attended:"

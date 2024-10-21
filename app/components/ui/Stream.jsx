@@ -30,7 +30,7 @@ const Stream = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="">
       <div className="grid grid-cols-5 gap-x-4">
         <SelectField
           label="Stream:"

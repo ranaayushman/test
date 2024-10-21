@@ -60,10 +60,10 @@ const Document = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-2">
-      <h2 className="text-xl font-semibold mb-6">Documents Required:</h2>
+    <form onSubmit={handleSubmit} className="p-2 pl-0">
+      <h2 className="text-md font-medium my-4">Documents Required:</h2>
 
-      <div className="grid grid-cols-4 gap-x-6 mb-4">
+      <div className="grid grid-cols-4 gap-x-6 ">
         <DocUpload
           label="Birth Certificate"
           placeholder="Upload Birth Certificate"

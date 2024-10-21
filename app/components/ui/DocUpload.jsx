@@ -16,12 +16,15 @@ const DocUpload = ({ label, placeholder, name, onChange, className }) => {
   return (
     <div className={`mb-4 ${className}`}>
       {label && (
-        <label htmlFor={`file-upload-${name}`} className="block text-sm font-medium text-gray-700 mb-2">
+        <label
+          htmlFor={`file-upload-${name}`}
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
           {label}
         </label>
       )}
-      <div className="border border-gray-600 p-4 rounded-lg">
-        <div className="flex items-center justify-between">
+      <div className="border border-black rounded-lg h-12 flex items-center px-4">
+        <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
             <span className="text-[0.75rem] text-gray-500">
               {selectedFile ? selectedFile.name : placeholder}

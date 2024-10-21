@@ -16,6 +16,7 @@ const Guardians = () => {
     speciallyAbled: "",
     disabilityType: "",
     categoryDocument: null,
+    disabilityDocument: null,
   });
 
   const disabilityOptions = [
@@ -50,14 +51,14 @@ const Guardians = () => {
       ...prev,
       [name]: value,
       ...(name === "speciallyAbled" &&
-        value === "No" && { disabilityType: "" }),
+        value === "No" && { disabilityType: "", disabilityDocument: null }),
     }));
   };
 
-  const handleFileChange = (file) => {
+  const handleFileChange = (file, fieldName) => {
     setFormData((prev) => ({
       ...prev,
-      categoryDocument: file,
+      [fieldName]: file,
     }));
   };
 
@@ -113,7 +114,7 @@ const Guardians = () => {
         />
       </div>
 
-      <div className="flex gap-x-5 mt-6">
+      <div className="flex gap-x-5 mt-4">
         <RadioField
           label="Only Child:"
           name="onlyChild"
@@ -122,14 +123,29 @@ const Guardians = () => {
           onChange={handleChange}
         />
         <div className="border h-16"></div>
-        <RadioField
-          label="Category:"
-          name="category"
-          options={["General", "SC", "ST", "OBC", "EWS (Attach Proof)"]}
-          value={formData.category}
-          onChange={handleChange}
-        />
-        <div className="border h-16"></div>
+        <div className="flex items-start gap-x-4">
+          <RadioField
+            label="Category:"
+            name="category"
+            options={["General", "SC", "ST", "OBC", "EWS (Attach Proof)"]}
+            value={formData.category}
+            onChange={handleChange}
+          />
+          {formData.category !== "General" && formData.category !== "" && (
+            <div className="w-64">
+              <DocUpload
+                label="Upload Category Proof (PDF Only):"
+                accept=".pdf"
+                onChange={(file) => handleFileChange(file, "categoryDocument")}
+                value={formData.categoryDocument}
+                placeholder="Upload PDF"
+              />
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="flex items-start justify-between gap-x-4 w-3/4">
         <RadioField
           label="Specially Abled:"
           name="speciallyAbled"
@@ -137,40 +153,41 @@ const Guardians = () => {
           value={formData.speciallyAbled}
           onChange={handleChange}
         />
+
+        {formData.speciallyAbled === "Yes" && (
+          <>
+            <div className="w-64">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Type of Disability:
+              </label>
+              <select
+                name="disabilityType"
+                value={formData.disabilityType}
+                onChange={handleChange}
+                className="h-12 border border-black block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              >
+                <option value="">Select Disability Type</option>
+                {disabilityOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="w-64">
+              <DocUpload
+                label="Upload Disability Proof (PDF Only):"
+                accept=".pdf"
+                onChange={(file) =>
+                  handleFileChange(file, "disabilityDocument")
+                }
+                value={formData.disabilityDocument}
+                placeholder="Upload PDF"
+              />
+            </div>
+          </>
+        )}
       </div>
-
-      {formData.speciallyAbled === "Yes" && (
-        <div className="mt-4 w-1/3">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Type of Disability:
-          </label>
-          <select
-            name="disabilityType"
-            value={formData.disabilityType}
-            onChange={handleChange}
-            className="my-4 h-12 border border-black block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-          >
-            <option value="">Select Disability Type</option>
-            {disabilityOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
-
-      {formData.category !== "General" && formData.category !== "" && (
-        <div className="mt-4 w-1/3">
-          <DocUpload
-            label="Upload Category Proof (PDF Only):"
-            accept=".pdf"
-            onChange={handleFileChange}
-            value={formData.categoryDocument}
-            placeholder="Upload PDF"
-          />
-        </div>
-      )}
     </form>
   );
 };

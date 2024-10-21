@@ -17,7 +17,6 @@ const PersonalInfo = () => {
     dob: "",
   });
 
-  // Predefined options for select fields
   const classOptions = [
     "Class 1",
     "Class 2",
@@ -76,7 +75,7 @@ const PersonalInfo = () => {
     });
 
     try {
-      const response = await fetch("https://example.com/api/submit", {
+      const response = await fetch("", {
         method: "POST",
         body: formDataToSend,
       });
@@ -106,15 +105,17 @@ const PersonalInfo = () => {
 
   return (
     <form onSubmit={handleSubmit} className="p-2 w-1/2">
-      <div className="space-y-6">
-        <InputField
-          placeholder="Enter Serial No"
-          name="serialNo"
-          value={formData.serialNo}
-          onChange={handleChange}
-          label="Serial No:"
-          required
-        />
+      <div className="">
+        <div className="">
+          <InputField
+            placeholder="Enter Serial No"
+            name="serialNo"
+            value={formData.serialNo}
+            onChange={handleChange}
+            label="Serial No:"
+            required
+          />
+        </div>
 
         <div className="grid grid-cols-2 gap-x-4">
           <SelectField
@@ -163,7 +164,7 @@ const PersonalInfo = () => {
           accept="image/*"
           placeholder="Upload a profile picture (maximum 2MB)"
         />
-        <div className="grid grid-cols-2 gap-x-16">
+        <div className="flex justify-between gap-x-4">
           <RadioField
             label="Gender:"
             name="gender"
@@ -172,6 +173,7 @@ const PersonalInfo = () => {
             onChange={handleChange}
             required
           />
+          <div className="h-16 border"></div>
           <DateField
             label="Date of Birth:"
             name="dob"
