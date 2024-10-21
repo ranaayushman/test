@@ -4,31 +4,31 @@ import { Image } from "lucide-react";
 
 const FileUploadField = ({ label, placeholder, name, onChange, className }) => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [error, setError] = useState("");
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-
-    const validTypes = ["image/jpeg"];
-    const minSize = 10 * 1024; 
-    const maxSize = 40 * 1024; 
-
     if (file) {
-      if (!validTypes.includes(file.type)) {
-        alert("Please select a JPG/JPEG image file only.");
+      const fileSizeInKB = file.size / 1024;
+      const validFileSize = fileSizeInKB >= 10 && fileSizeInKB <= 40;
+      const validFileType = file.type === "image/jpeg";
+
+      if (!validFileType) {
+        setError("Only .jpg files are allowed.");
+        setSelectedFile(null);
+        setPreview(null);
         return;
       }
 
-      if (file.size < minSize) {
-        alert("File size should be at least 10KB.");
+      if (!validFileSize) {
+        setError("File size must be between 10 KB and 40 KB.");
+        setSelectedFile(null);
+        setPreview(null);
         return;
       }
 
-      if (file.size > maxSize) {
-        alert("File size should not exceed 40KB.");
-        return;
-      }
-
+      setError("");
       setSelectedFile(file);
       setPreviewUrl(URL.createObjectURL(file));
       onChange({ target: { name, value: file } });
@@ -64,10 +64,11 @@ const FileUploadField = ({ label, placeholder, name, onChange, className }) => {
           onChange={handleFileChange}
           className="hidden"
         />
-        {previewUrl && (
+        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+        {preview && (
           <div className="mt-4">
             <img
-              src={previewUrl}
+              src={preview}
               alt="Preview"
               className="h-32 w-32 object-cover border-2 border-gray-300 rounded-lg"
             />
