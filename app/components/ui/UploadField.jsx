@@ -9,17 +9,23 @@ const FileUploadField = ({ label, placeholder, name, onChange, className }) => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
-    const validTypes = ["image/jpeg", "image/png"];
-    const maxSize = 2 * 1024 * 1024;
+    const validTypes = ["image/jpeg"];
+    const minSize = 10 * 1024; 
+    const maxSize = 40 * 1024; 
 
     if (file) {
       if (!validTypes.includes(file.type)) {
-        alert("Please select a valid image file (JPG, JPEG, PNG).");
+        alert("Please select a JPG/JPEG image file only.");
+        return;
+      }
+
+      if (file.size < minSize) {
+        alert("File size should be at least 10KB.");
         return;
       }
 
       if (file.size > maxSize) {
-        alert("File size should not exceed 2MB.");
+        alert("File size should not exceed 40KB.");
         return;
       }
 
@@ -54,7 +60,7 @@ const FileUploadField = ({ label, placeholder, name, onChange, className }) => {
         <input
           id={`file-upload-${name}`}
           type="file"
-          accept=".jpg,.jpeg,.png"
+          accept=".jpg,.jpeg"
           onChange={handleFileChange}
           className="hidden"
         />

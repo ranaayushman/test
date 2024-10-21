@@ -40,12 +40,17 @@ const PersonalInfo = () => {
   const handleFileChange = (e) => {
     const { name, files } = e.target;
     if (files && files[0]) {
-      if (files[0].size > 2 * 1024 * 1024) {
-        alert("File size should not exceed 2MB");
+      const minSize = 10 * 1024;
+      const maxSize = 40 * 1024;
+      const file = files[0];
+
+      if (file.size < minSize || file.size > maxSize) {
+        alert("Image size should be between 10KB to 40KB");
         e.target.value = null;
         return;
       }
-      setFormData({ ...formData, [name]: files[0] });
+
+      setFormData({ ...formData, [name]: file });
     }
   };
 
@@ -161,8 +166,8 @@ const PersonalInfo = () => {
           label="Profile Picture"
           name="profilePicture"
           onChange={handleFileChange}
-          accept="image/*"
-          placeholder="Upload a profile picture (maximum 2MB)"
+          accept=".jpg,.jpeg"
+          placeholder="Upload a profile picture (10KB-40KB)"
         />
         <div className="flex justify-between gap-x-4">
           <RadioField
