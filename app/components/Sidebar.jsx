@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menus } from "../constants";
+import Image from "next/image";
 
 const Asidebar = () => {
   const [open, setOpen] = useState(true);
@@ -18,8 +19,11 @@ const Asidebar = () => {
         } duration-300 h-full p-0 pt-8 relative bg-white border-r border-gray-200 shadow-lg`}
       >
         <div className="flex justify-center items-center mb-6">
-          <Icon
-            icon="ci:hamburger"
+          <Image
+            width={10}
+            height={10}
+            alt=""
+            src="/img/angel_logo.png"
             className={`w-10 h-10 text-[#789336] cursor-pointer ${
               open ? "hidden" : "block"
             }`}
