@@ -12,7 +12,7 @@ const Asidebar = () => {
   const toggleSidebar = () => setOpen(!open);
 
   return (
-    <div className="flex sticky inset-0 shadow-2xl z-10">
+    <div className="flex sticky inset-0 drop-shadow-custom z-10">
       <div
         className={`${
           open ? "w-56" : "w-20"
