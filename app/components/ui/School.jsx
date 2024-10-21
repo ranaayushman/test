@@ -3,6 +3,7 @@ import InputField from "@/app/components/ui/InputField";
 import RadioField from "@/app/components/ui/RadioField";
 import SelectField from "@/app/components/ui/SelectField";
 import React, { useState } from "react";
+import { Plus } from "lucide-react";
 
 const School = () => {
   const [formData, setFormData] = useState({
@@ -41,6 +42,22 @@ const School = () => {
     const updatedSubjects = [...formData.subjects];
     updatedSubjects[index][name] = value;
     setFormData({ ...formData, subjects: updatedSubjects });
+  };
+
+  const addSubject = () => {
+    setFormData({
+      ...formData,
+      subjects: [
+        ...formData.subjects,
+        {
+          subject: "",
+          maxMarks: "",
+          obtainedMarks: "",
+          percentage: "",
+          remarks: "",
+        },
+      ],
+    });
   };
 
   const handleSubmit = (e) => {
@@ -86,9 +103,9 @@ const School = () => {
 
       <div>
         <h2 className="mb-5">Result of last Class:</h2>
-        <div className="grid grid-cols-6 gap-4">
+        <div className="space-y-4">
           {formData.subjects.map((subject, index) => (
-            <React.Fragment key={index}>
+            <div key={index} className="grid grid-cols-6 gap-4 items-center">
               <SelectField
                 label="Subject"
                 placeholder="Select Subject"
@@ -124,7 +141,19 @@ const School = () => {
                 value={subject.remarks}
                 onChange={(e) => handleSubjectChange(index, e)}
               />
-            </React.Fragment>
+              {index === formData.subjects.length - 1 && (
+            <div className="flex items-center space-x-2">
+              <button
+                type="button"
+                onClick={addSubject}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-[#789336] text-white"
+              >
+                <Plus size={20} />
+              </button>
+              <span className="text-sm">Add Subject</span>
+            </div>
+          )}
+            </div>
           ))}
         </div>
       </div>
