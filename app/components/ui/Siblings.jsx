@@ -80,7 +80,7 @@ const Siblings = () => {
               <button
                 type="button"
                 onClick={addSiblings}
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-[#789336] text-white"
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-[#789336] text-white"
               >
                 <Plus size={20} />
               </button>
