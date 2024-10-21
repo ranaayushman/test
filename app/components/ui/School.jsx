@@ -130,7 +130,7 @@ const School = () => {
       </div>
 
       <div>
-        <h3 className="my-5">Transfer Certificate Details*:</h3>
+        <h3 className="my-4">Transfer Certificate Details*:</h3>
         <div className="grid grid-cols-4 gap-4">
           <InputField
             label="Transfer Certificate No:"

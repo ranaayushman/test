@@ -27,8 +27,8 @@ const Siblings = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="my-5">Details of siblings (if any):</h2>
+    <form onSubmit={handleSubmit} className="">
+      <h2 className="my-4">Details of siblings (if any):</h2>
       {formData.siblings.map((sibling, index) => (
         <div key={index} className="grid grid-cols-5 gap-4">
           <InputField
