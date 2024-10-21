@@ -84,7 +84,7 @@ const Siblings = () => {
               >
                 <Plus size={20} />
               </button>
-              <span className="text-sm">Add Siblings</span>
+              <span className="text-sm">Add Sibling</span>
             </div>
           )}
         </div>
