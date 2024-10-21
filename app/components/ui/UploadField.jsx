@@ -4,18 +4,19 @@ import { Image } from "lucide-react";
 
 const FileUploadField = ({ label, placeholder, name, onChange, className }) => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [error, setError] = useState("");
+  const [preview, setPreview] = useState(null); // Changed to match DocUpload
+  const [error, setError] = useState(""); // Keeping the same error handling as DocUpload
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+
     if (file) {
-      const fileSizeInKB = file.size / 1024;
+      const fileSizeInKB = file.size / 1024; 
       const validFileSize = fileSizeInKB >= 10 && fileSizeInKB <= 40;
-      const validFileType = file.type === "image/jpeg";
+      const validFileType = file.type === "image/jpeg"; 
 
       if (!validFileType) {
-        setError("Only .jpg files are allowed.");
+        setError("Only .jpg files are allowed."); 
         setSelectedFile(null);
         setPreview(null);
         return;
@@ -28,9 +29,9 @@ const FileUploadField = ({ label, placeholder, name, onChange, className }) => {
         return;
       }
 
-      setError("");
+      setError(""); 
       setSelectedFile(file);
-      setPreviewUrl(URL.createObjectURL(file));
+      setPreview(URL.createObjectURL(file)); 
       onChange({ target: { name, value: file } });
     }
   };
