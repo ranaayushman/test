@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 
 const SearchFilter = () => {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState(false);
+  const filterRef = useRef(null);
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
@@ -12,6 +13,18 @@ const SearchFilter = () => {
   const toggleFilter = () => {
     setFilter(!filter);
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (filterRef.current && !filterRef.current.contains(event.target)) {
+        setFilter(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="flex justify-between space-x-4 px-2">
@@ -28,9 +41,10 @@ const SearchFilter = () => {
         />
       </div>
       <button
+        ref={filterRef}
         onClick={toggleFilter}
         className={`flex items-center px-4 py-2 rounded-full drop-shadow-custom ${
-          filter ? " text-slate-500" : "bg-white text-black"
+          filter ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
         <SlidersHorizontal className="mr-2" />
