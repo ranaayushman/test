@@ -24,6 +24,10 @@ body {
   }
 }
 
+.placeholder-black::placeholder {
+  color: black;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
