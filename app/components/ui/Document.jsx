@@ -60,7 +60,7 @@ const Document = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4">
+    <form onSubmit={handleSubmit} className="mt-[1.5rem]">
       <h2 className="text-md font-medium mb-[10px]">Documents Required:</h2>
 
       <div className="grid grid-cols-4 gap-x-6 ">
