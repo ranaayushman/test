@@ -13,7 +13,10 @@ const SelectField = ({
 }) => {
   return (
     <div className="mb-4">
-      <label htmlFor={name} className="block text-sm font-medium text-black mb-1">
+      <label
+        htmlFor={name}
+        className="block text-sm font-medium text-black mb-1"
+      >
         {label}
       </label>
       <div className="relative">

@@ -1,5 +1,5 @@
-import InputField from "@/app/components/ui/InputField";
-import SelectField from "@/app/components/ui/SelectField";
+import InputField from "@/app/components/ui/fields/InputField";
+import SelectField from "@/app/components/ui/fields/SelectField";
 import React, { useState } from "react";
 
 const Subjects = () => {
@@ -30,8 +30,8 @@ const Subjects = () => {
 
   return (
     <form onSubmit={handleSubmit} className="">
-      <h2>Subjects:</h2>
-      <div className="grid grid-cols-5 gap-x-4">
+      <h2 className="text-md">Subjects:</h2>
+      <div className="grid grid-cols-5 gap-x-5">
         <SelectField
           placeholder="Enter Subject 1"
           name="subject1"
@@ -51,7 +51,7 @@ const Subjects = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="grid grid-cols-5 gap-x-4">
+      <div className="grid grid-cols-5 gap-x-5">
         <SelectField
           placeholder="Enter Subject 4"
           name="subject4"
@@ -71,7 +71,7 @@ const Subjects = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="grid grid-cols-5 gap-x-4">
+      <div className="grid grid-cols-5 gap-x-5">
         <SelectField
           placeholder="Enter Subject 7"
           name="subject7"
@@ -80,8 +80,8 @@ const Subjects = () => {
         />
       </div>
 
-      <h2>Phone No:</h2>
-      <div className="grid grid-cols-5 gap-x-4">
+      <h2 className="text-md mt-4">Phone No:</h2>
+      <div className="grid grid-cols-5 gap-x-5">
         <InputField
           placeholder="Primary No."
           name="primaryPhone"
@@ -102,9 +102,9 @@ const Subjects = () => {
         />
       </div>
 
-      <div className="w-1/2">
+      <div className="w-1/2 mb-4">
+        <h2 className="text-md">Email:</h2>
         <InputField
-          label="Email:"
           placeholder="Email"
           name="email"
           value={formData.email}
@@ -113,8 +113,9 @@ const Subjects = () => {
       </div>
 
       <div className="w-1/2">
+        <h2 className="text-md">Permanent/Local Address:</h2>
         <InputField
-          label="Permanent/Local Address:"
+          label=""
           placeholder="Permanent/Local Address"
           name="address"
           value={formData.address}

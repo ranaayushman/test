@@ -1,5 +1,5 @@
-import InputField from "@/app/components/ui/InputField";
-import SelectField from "@/app/components/ui/SelectField";
+import InputField from "@/app/components/ui/fields/InputField";
+import SelectField from "@/app/components/ui/fields/SelectField";
 import React, { useState } from "react";
 
 const Stream = () => {
@@ -30,8 +30,8 @@ const Stream = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="">
-      <div className="grid grid-cols-5 gap-x-4">
+    <form onSubmit={handleSubmit} className="mb-4">
+      <div className="grid grid-cols-5 gap-x-5">
         <SelectField
           label="Stream:"
           placeholder="Select Stream"
@@ -55,7 +55,7 @@ const Stream = () => {
         />
       </div>
 
-      <div className="grid grid-cols-5 gap-x-4">
+      <div className="grid grid-cols-5 gap-x-5">
         <SelectField
           label="Religion:"
           placeholder="Select Religion"
@@ -79,7 +79,7 @@ const Stream = () => {
         />
       </div>
 
-      <div className="grid grid-cols-5 gap-x-4">
+      <div className="grid grid-cols-5 gap-x-5">
         <InputField
           label="Height:"
           placeholder="Enter Height"
@@ -103,7 +103,7 @@ const Stream = () => {
         />
       </div>
 
-      <div className="grid grid-cols-5 gap-x-4">
+      <div className="grid grid-cols-5 gap-x-5">
         <InputField
           label="P.S.:"
           placeholder="Enter P.S."
@@ -127,7 +127,7 @@ const Stream = () => {
         />
       </div>
 
-      <div className="grid grid-cols-5 gap-x-4">
+      <div className="grid grid-cols-5 gap-x-5">
         <InputField
           label="Second Language:"
           placeholder="Enter Second Language"

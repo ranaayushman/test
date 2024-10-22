@@ -1,5 +1,5 @@
-import InputField from "@/app/components/ui/InputField";
-import SelectField from "@/app/components/ui/SelectField";
+import InputField from "@/app/components/ui/fields/InputField";
+import SelectField from "@/app/components/ui/fields/SelectField";
 import React, { useState } from "react";
 
 const Finance = () => {
@@ -27,7 +27,7 @@ const Finance = () => {
         Financial Resources of Parents/Guardian:
       </h2>
 
-      <div className="grid grid-cols-4 gap-x-4">
+      <div className="grid grid-cols-4 gap-x-6">
         <InputField
           label="Relation With Guardian:"
           placeholder="Relation"
@@ -44,7 +44,7 @@ const Finance = () => {
         />
       </div>
 
-      <div className="grid grid-cols-4 gap-x-4">
+      <div className="grid grid-cols-4 gap-x-6">
         <InputField
           label="Guardian's Designation:"
           placeholder="Designation"
@@ -61,7 +61,7 @@ const Finance = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="grid grid-cols-4 gap-x-4">
+      <div className="grid grid-cols-4 gap-x-6">
         <SelectField
           label="Earning Members in Family:"
           options={["1", "2", "3", "4", "5+"]}

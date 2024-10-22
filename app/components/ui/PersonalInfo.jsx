@@ -1,8 +1,8 @@
-import DateField from "@/app/components/ui/DateField";
-import InputField from "@/app/components/ui/InputField";
-import RadioField from "@/app/components/ui/RadioField";
-import SelectField from "@/app/components/ui/SelectField";
-import FileUploadField from "@/app/components/ui/UploadField";
+import DateField from "@/app/components/ui/fields/DateField";
+import InputField from "@/app/components/ui/fields/InputField";
+import RadioField from "@/app/components/ui/fields/RadioField";
+import SelectField from "@/app/components/ui/fields/SelectField";
+import FileUploadField from "@/app/components/ui/fields/UploadField";
 import React, { useState } from "react";
 
 const PersonalInfo = () => {
