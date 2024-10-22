@@ -8,6 +8,7 @@ const Finance = () => {
     monthlyIncome: "",
     guardianDesignation: "",
     earningMembers: "",
+    dependentMembers: "",
   });
 
   const handleChange = (e) => {
@@ -22,11 +23,11 @@ const Finance = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="text-md font-semibold mb-4">
-        Financial Resources of Parents/Guardian:{" "}
+      <h2 className="text-md font-medium mb-4">
+        Financial Resources of Parents/Guardian:
       </h2>
 
-      <div className="grid grid-cols-4 gap-x-4 mt-4">
+      <div className="grid grid-cols-4 gap-x-4">
         <InputField
           label="Relation With Guardian:"
           placeholder="Relation"
@@ -43,7 +44,7 @@ const Finance = () => {
         />
       </div>
 
-      <div className="grid grid-cols-4 gap-x-4 mt-4">
+      <div className="grid grid-cols-4 gap-x-4">
         <InputField
           label="Guardian's Designation:"
           placeholder="Designation"
@@ -51,6 +52,16 @@ const Finance = () => {
           value={formData.guardianDesignation}
           onChange={handleChange}
         />
+        <SelectField
+          label="Dependents on Guardians:"
+          options={["1", "2", "3", "4", "5+"]}
+          placeholder="Select Number"
+          name="dependentMembers"
+          value={formData.dependentMembers}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="grid grid-cols-4 gap-x-4">
         <SelectField
           label="Earning Members in Family:"
           options={["1", "2", "3", "4", "5+"]}

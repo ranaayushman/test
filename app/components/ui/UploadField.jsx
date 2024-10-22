@@ -4,27 +4,34 @@ import { Image } from "lucide-react";
 
 const FileUploadField = ({ label, placeholder, name, onChange, className }) => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
+  const [preview, setPreview] = useState(null); // Changed to match DocUpload
+  const [error, setError] = useState(""); // Keeping the same error handling as DocUpload
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
-    const validTypes = ["image/jpeg", "image/png"];
-    const maxSize = 2 * 1024 * 1024;
-
     if (file) {
-      if (!validTypes.includes(file.type)) {
-        alert("Please select a valid image file (JPG, JPEG, PNG).");
+      const fileSizeInKB = file.size / 1024; 
+      const validFileSize = fileSizeInKB >= 10 && fileSizeInKB <= 40;
+      const validFileType = file.type === "image/jpeg"; 
+
+      if (!validFileType) {
+        setError("Only .jpg files are allowed."); 
+        setSelectedFile(null);
+        setPreview(null);
         return;
       }
 
-      if (file.size > maxSize) {
-        alert("File size should not exceed 2MB.");
+      if (!validFileSize) {
+        setError("File size must be between 10 KB and 40 KB.");
+        setSelectedFile(null);
+        setPreview(null);
         return;
       }
 
+      setError(""); 
       setSelectedFile(file);
-      setPreviewUrl(URL.createObjectURL(file));
+      setPreview(URL.createObjectURL(file)); 
       onChange({ target: { name, value: file } });
     }
   };
@@ -54,14 +61,15 @@ const FileUploadField = ({ label, placeholder, name, onChange, className }) => {
         <input
           id={`file-upload-${name}`}
           type="file"
-          accept=".jpg,.jpeg,.png"
+          accept=".jpg,.jpeg"
           onChange={handleFileChange}
           className="hidden"
         />
-        {previewUrl && (
+        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+        {preview && (
           <div className="mt-4">
             <img
-              src={previewUrl}
+              src={preview}
               alt="Preview"
               className="h-32 w-32 object-cover border-2 border-gray-300 rounded-lg"
             />

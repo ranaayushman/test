@@ -63,7 +63,9 @@ const Asidebar = () => {
                   <span
                     className={`${
                       !open && "hidden"
-                    } origin-left duration-200 font-semibold group-hover:text-white`}
+                    } origin-left duration-200 ${
+                      isActive ? "font-semibold" : "font-medium"
+                    } group-hover:text-white`}
                   >
                     {menu.title}
                   </span>

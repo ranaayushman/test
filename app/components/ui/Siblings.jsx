@@ -1,6 +1,7 @@
 import InputField from "@/app/components/ui/InputField";
 import SelectField from "@/app/components/ui/SelectField";
 import React, { useState } from "react";
+import { Plus } from "lucide-react";
 
 const Siblings = () => {
   const [formData, setFormData] = useState({
@@ -21,16 +22,31 @@ const Siblings = () => {
     setFormData({ ...formData, siblings: updatedSiblings });
   };
 
+  const addSiblings = () => {
+    setFormData({
+      ...formData,
+      siblings: [
+        ...formData.siblings,
+        {
+          name: "",
+          relation: "",
+          age: "",
+          school: "",
+        },
+      ],
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="my-5">Details of siblings (if any):</h2>
+    <form onSubmit={handleSubmit} className="">
+      <h2 className="my-4">Details of siblings (if any):</h2>
       {formData.siblings.map((sibling, index) => (
-        <div key={index} className="grid grid-cols-5 gap-4">
+        <div key={index} className="grid grid-cols-5 gap-4 items-center">
           <InputField
             label="Name"
             placeholder="Enter Name"
@@ -59,6 +75,18 @@ const Siblings = () => {
             value={sibling.school}
             onChange={(e) => handleSiblingChange(index, e)}
           />
+          {index === formData.siblings.length - 1 && (
+            <div className="flex items-center space-x-2">
+              <button
+                type="button"
+                onClick={addSiblings}
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-[#789336] text-white"
+              >
+                <Plus size={20} />
+              </button>
+              <span className="text-sm">Add Sibling</span>
+            </div>
+          )}
         </div>
       ))}
     </form>

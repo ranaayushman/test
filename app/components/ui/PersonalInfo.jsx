@@ -17,7 +17,6 @@ const PersonalInfo = () => {
     dob: "",
   });
 
-  // Predefined options for select fields
   const classOptions = [
     "Class 1",
     "Class 2",
@@ -41,12 +40,17 @@ const PersonalInfo = () => {
   const handleFileChange = (e) => {
     const { name, files } = e.target;
     if (files && files[0]) {
-      if (files[0].size > 2 * 1024 * 1024) {
-        alert("File size should not exceed 2MB");
+      const minSize = 10 * 1024;
+      const maxSize = 40 * 1024;
+      const file = files[0];
+
+      if (file.size < minSize || file.size > maxSize) {
+        alert("Image size should be between 10KB to 40KB");
         e.target.value = null;
         return;
       }
-      setFormData({ ...formData, [name]: files[0] });
+
+      setFormData({ ...formData, [name]: file });
     }
   };
 
@@ -76,7 +80,7 @@ const PersonalInfo = () => {
     });
 
     try {
-      const response = await fetch("https://example.com/api/submit", {
+      const response = await fetch("", {
         method: "POST",
         body: formDataToSend,
       });
@@ -106,15 +110,17 @@ const PersonalInfo = () => {
 
   return (
     <form onSubmit={handleSubmit} className="p-2 w-1/2">
-      <div className="space-y-6">
-        <InputField
-          placeholder="Enter Serial No"
-          name="serialNo"
-          value={formData.serialNo}
-          onChange={handleChange}
-          label="Serial No:"
-          required
-        />
+      <div className="">
+        <div className="">
+          <InputField
+            placeholder="Enter Serial No"
+            name="serialNo"
+            value={formData.serialNo}
+            onChange={handleChange}
+            label="Serial No:"
+            required
+          />
+        </div>
 
         <div className="grid grid-cols-2 gap-x-4">
           <SelectField
@@ -160,10 +166,10 @@ const PersonalInfo = () => {
           label="Profile Picture"
           name="profilePicture"
           onChange={handleFileChange}
-          accept="image/*"
-          placeholder="Upload a profile picture (maximum 2MB)"
+          accept=".jpg,.jpeg"
+          placeholder="Upload a profile picture (10KB-40KB)"
         />
-        <div className="grid grid-cols-2 gap-x-16">
+        <div className="flex justify-between gap-x-4">
           <RadioField
             label="Gender:"
             name="gender"
@@ -172,6 +178,7 @@ const PersonalInfo = () => {
             onChange={handleChange}
             required
           />
+          <div className="h-16 border"></div>
           <DateField
             label="Date of Birth:"
             name="dob"
