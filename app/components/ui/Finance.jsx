@@ -22,7 +22,7 @@ const Finance = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-1">
+    <form onSubmit={handleSubmit} className="mt-4">
       <h2 className="text-md font-medium mb-[10px]">
         Financial Resources of Parents/Guardian:
       </h2>
