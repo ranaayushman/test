@@ -29,7 +29,7 @@ const Subjects = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="">
+    <form onSubmit={handleSubmit}>
       <h2 className="text-md">Subjects:</h2>
       <div className="grid grid-cols-5 gap-x-5">
         <SelectField
