@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import SearchFilter from "./Button";
 
 const StudentTable = () => {
   const students = [
