@@ -1,7 +1,7 @@
-import DateField from "@/app/components/ui/DateField";
-import InputField from "@/app/components/ui/InputField";
-import RadioField from "@/app/components/ui/RadioField";
-import SelectField from "@/app/components/ui/SelectField";
+import DateField from "@/app/components/ui/fields/DateField";
+import InputField from "@/app/components/ui/fields/InputField";
+import RadioField from "@/app/components/ui/fields/RadioField";
+import SelectField from "@/app/components/ui/fields/SelectField";
 import React, { useState } from "react";
 import { Plus } from "lucide-react";
 
@@ -102,7 +102,7 @@ const School = () => {
       </div>
 
       <div>
-        <h2 className="mb-5">Result of last Class:</h2>
+        <h2 className="mb-[10px] text-md">Result of last Class:</h2>
         <div className="space-y-4">
           {formData.subjects.map((subject, index) => (
             <div key={index} className="grid grid-cols-6 gap-4 items-center">
@@ -159,7 +159,7 @@ const School = () => {
       </div>
 
       <div>
-        <h3 className="my-4">Transfer Certificate Details*:</h3>
+        <h3 className="mt-4 mb-[10px]">Transfer Certificate Details*:</h3>
         <div className="grid grid-cols-4 gap-4">
           <InputField
             label="Transfer Certificate No:"

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import InputField from "@/app/components/ui/InputField";
-import RadioField from "@/app/components/ui/RadioField";
-import DocUpload from "@/app/components/ui/DocUpload";
+import InputField from "@/app/components/ui/fields/InputField";
+import RadioField from "@/app/components/ui/fields/RadioField";
+import DocUpload from "@/app/components/ui/fields/DocUpload";
 
 const Guardians = () => {
   const [formData, setFormData] = useState({
@@ -134,11 +134,11 @@ const Guardians = () => {
           {formData.category !== "General" && formData.category !== "" && (
             <div className="w-64">
               <DocUpload
-                label="Upload Category Proof (PDF Only):"
-                accept=".pdf"
+                label="Upload Category Proof :"
+                accept=""
                 onChange={(file) => handleFileChange(file, "categoryDocument")}
                 value={formData.categoryDocument}
-                placeholder="Upload PDF"
+                placeholder="Upload Proof"
               />
             </div>
           )}
