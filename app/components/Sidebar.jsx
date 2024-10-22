@@ -13,7 +13,7 @@ const Asidebar = () => {
   const toggleSidebar = () => setOpen(!open);
 
   return (
-    <div className="flex sticky inset-0 drop-shadow-custom z-10 h-full">
+    <div className="flex sticky inset-0 drop-shadow-custom z-10">
       <div
         className={` ${
           open ? "w-56" : "w-20"
@@ -51,7 +51,7 @@ const Asidebar = () => {
               <li
                 key={index}
                 className={`text-md flex items-center gap-x-4 cursor-pointer p-2 hover:bg-[#789336] ${
-                  menu.gap ? "mt-44" : "mt-2"
+                  menu.gap ? "mt-40" : "mt-2"
                 } ${!open && "justify-center"} group ${
                   isActive ? "bg-[#789336] text-white" : "text-slate-900"
                 }`}
