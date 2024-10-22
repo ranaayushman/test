@@ -2,7 +2,7 @@ export const Menus = [
   {
     title: "Dashboard",
     icon: "material-symbols-light:dashboard-outline",
-    href: "/dashboard",
+    href: "/students",
   },
   { title: "Add Student", icon: "ic:round-person-add", href: "/" },
   {
