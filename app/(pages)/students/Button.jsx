@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
+import Image from "next/image";
 
 const SearchFilter = () => {
   const [search, setSearch] = useState("");
@@ -47,7 +48,7 @@ const SearchFilter = () => {
           filter ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
-        <SlidersHorizontal className="mr-2" />
+        <Image width={20} height={20} src="/svg/filter.svg" alt="filter" className="mx-2" />
         Filter by Class
       </button>
     </div>
