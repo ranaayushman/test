@@ -35,7 +35,7 @@ const SearchFilter = () => {
           type="text"
           value={search}
           onChange={handleSearchChange}
-          placeholder="Search..."
+          placeholder="Search Individual Student"
           className={`pl-10 pr-4 py-2 w-full rounded-full ${
             search ? "text-black" : "text-black"
           }`}
@@ -44,11 +44,17 @@ const SearchFilter = () => {
       <button
         ref={filterRef}
         onClick={toggleFilter}
-        className={`flex items-center px-4 py-2 rounded-full drop-shadow-custom ${
+        className={`flex items-center px-4 py-2 rounded-full drop-shadow-custom transition-all duration-200 ${
           filter ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
-        <Image width={20} height={20} src="/svg/filter.svg" alt="filter" className="mx-2" />
+        <Image
+          width={20}
+          height={20}
+          src="/svg/filter.svg"
+          alt="filter"
+          className="mx-2"
+        />
         Filter by Class
       </button>
     </div>

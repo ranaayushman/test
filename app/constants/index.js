@@ -8,7 +8,7 @@ export const Menus = [
   {
     title: "Add Teacher",
     icon: "fluent:person-add-20-regular",
-    href: "/add-staff",
+    href: "/teacher",
   },
   {
     title: "Update Schedule",
