@@ -6,7 +6,7 @@ const TeacherForm = () => {
   return (
     <div className="bg-white drop-shadow-custom rounded-md p-6">
       <TeacherPInfo />
-      <TeacherCategory />
+      {/* <TeacherCategory /> */}
     </div>
   );
 };
