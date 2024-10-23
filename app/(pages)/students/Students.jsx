@@ -76,34 +76,31 @@ const StudentTable = () => {
       <table className="w-full bg-white rounded-lg">
         <thead>
           <tr className="">
-            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-left">
+            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-centre">
               Serial No.
             </th>
-            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-left">
+            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-centre">
               Name
             </th>
-            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-left">
+            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-centre">
               D.O.B
             </th>
-            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-left">
+            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-centre">
               Class
             </th>
-            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-left">
+            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-centre">
               Sec
             </th>
-            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-left">
+            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-centre">
               Roll No.
             </th>
-            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-left">
-              Reg No.
-            </th>
-            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-left">
+            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-centre">
               Address
             </th>
-            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-left">
+            <th className="border border-black border-l-0 border-t-0 px-4 py-2 text-centre">
               Picture
             </th>
-            <th className="border border-black border-r-0 border-t-0 px-4 py-2 text-left">
+            <th className="border border-black border-r-0 border-t-0 px-4 py-2 text-centre">
               Action
             </th>
           </tr>
@@ -111,31 +108,28 @@ const StudentTable = () => {
         <tbody>
           {students.map((student, index) => (
             <tr key={index}>
-              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm">
+              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm text-center">
                 {student.serialNo}
               </td>
-              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm">
+              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm text-center">
                 {student.name}
               </td>
-              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm">
+              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm text-center">
                 {student.dob}
               </td>
-              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm">
+              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm text-center">
                 {student.class}
               </td>
-              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm">
+              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm text-center">
                 {student.sec}
               </td>
-              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm">
+              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm text-center">
                 {student.rollNo}
               </td>
-              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm">
-                {student.regNo}
-              </td>
-              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm">
+              <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm text-center">
                 {student.address}
               </td>
-              <td className="border border-black border-l-0 border-b-0 px-4 py-2">
+              <td className="border border-black border-l-0 border-r-0 border-b-0 px-4 py-2 justify-center ">
                 <Image
                   width={60}
                   height={60}
@@ -144,7 +138,7 @@ const StudentTable = () => {
                   className="object-cover"
                 />
               </td>
-              <td className="border border-black border-r-0 border-b-0 px-4 py-2">
+              <td className="border border-black border-r-0 border-b-0 px-4 py-2 text-center">
                 <button className="bg-[#789336] text-white px-3 py-1 rounded text-sm">
                   Update Info
                 </button>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PersonalInfo from "./ui/PersonalInfo";
 import Guardians from "./ui/Guardians";
 import School from "./ui/School";
@@ -10,7 +10,7 @@ import Finance from "./ui/Finance";
 
 const NewForm = () => {
   return (
-    <div className="w-full drop-shadow-custom bg-white p-8 rounded-md">
+    <div className="w-full drop-shadow-custom bg-white p-6 rounded-md">
       <PersonalInfo />
       <Guardians />
       <School />

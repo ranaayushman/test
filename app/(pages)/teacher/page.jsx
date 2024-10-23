@@ -7,6 +7,7 @@ const Asidebar = dynamic(() => import("@/app/components/Sidebar"), {
   ssr: false,
 });
 const Header = dynamic(() => import("@/app/components/Header"), { ssr: false });
+const TeacherForm = dynamic(() => import("./TeacherForm"), { ssr: false });
 const page = () => {
   return (
     <div className="flex gap-x-3">
@@ -15,7 +16,7 @@ const page = () => {
       </div>
       <div className="w-full flex flex-col gap-y-4 m-2">
         <Header />
-   
+        <TeacherForm />
       </div>
     </div>
   );

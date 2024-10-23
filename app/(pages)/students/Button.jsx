@@ -44,7 +44,7 @@ const SearchFilter = () => {
       <button
         ref={filterRef}
         onClick={toggleFilter}
-        className={`flex items-center px-4 py-2 rounded-full drop-shadow-custom ${
+        className={`flex items-center px-4 py-2 rounded-full drop-shadow-custom transition-all duration-200 ${
           filter ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
