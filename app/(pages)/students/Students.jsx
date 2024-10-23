@@ -129,7 +129,7 @@ const StudentTable = () => {
               <td className="border border-black border-l-0 border-b-0 px-4 py-2 text-sm text-center">
                 {student.address}
               </td>
-              <td className="border border-black border-l-0 border-r-0 border-b-0 px-4 py-2 justify-center ">
+              <td className="border border-black border-l-0 border-r-0 border-b-0 px-4 py-2 ">
                 <Image
                   width={60}
                   height={60}

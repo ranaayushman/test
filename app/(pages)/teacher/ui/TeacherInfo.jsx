@@ -1,40 +1,31 @@
 import DateField from "@/app/components/ui/fields/DateField";
 import InputField from "@/app/components/ui/fields/InputField";
 import RadioField from "@/app/components/ui/fields/RadioField";
-import SelectField from "@/app/components/ui/fields/SelectField";
 import FileUploadField from "@/app/components/ui/fields/UploadField";
 import React, { useState } from "react";
 
 const TeacherPInfo = () => {
   const [formData, setFormData] = useState({
     TeacherCode: "",
-    class: "",
+    teacherName: "",
     admissionDate: "",
     session: "",
     fullName: "",
     profilePicture: null,
     gender: "",
     dob: "",
+    primaryPhone: "",
+    secondaryPhone: "",
+    optionalPhone: "",
+    email: "",
   });
-
-  const classOptions = [
-    "Class 1",
-    "Class 2",
-    "Class 3",
-    "Class 4",
-    "Class 5",
-    "Class 6",
-    "Class 7",
-    "Class 8",
-    "Class 9",
-    "Class 10",
-  ];
-
-  const sessionOptions = ["2023", "2024", "2025"];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleFileChange = (e) => {
@@ -50,31 +41,27 @@ const TeacherPInfo = () => {
         return;
       }
 
-      setFormData({ ...formData, [name]: file });
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: file,
+      }));
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataToSend = new FormData();
-    const requiredFields = [
-      "serialNo",
-      "class",
-      "admissionDate",
-      "session",
-      "fullName",
-      "gender",
-      "dob",
-    ];
+    const requiredFields = ["TeacherCode", "fullName", "gender", "dob"];
     const missingFields = requiredFields.filter((field) => !formData[field]);
 
     if (missingFields.length > 0) {
       alert(`Please fill in all required fields: ${missingFields.join(", ")}`);
       return;
     }
+
+    const formDataToSend = new FormData();
     Object.keys(formData).forEach((key) => {
-      if (formData[key] !== null) {
+      if (formData[key] !== null && formData[key] !== "") {
         formDataToSend.append(key, formData[key]);
       }
     });
@@ -90,14 +77,18 @@ const TeacherPInfo = () => {
         console.log("Form Data Submitted Successfully:", data);
         alert("Form submitted successfully");
         setFormData({
-          serialNo: "",
-          class: "",
+          TeacherCode: "",
+          teacherName: "",
           admissionDate: "",
           session: "",
           fullName: "",
           profilePicture: null,
           gender: "",
           dob: "",
+          primaryPhone: "",
+          secondaryPhone: "",
+          optionalPhone: "",
+          email: "",
         });
       } else {
         alert("Error submitting form. Please try again.");
@@ -113,22 +104,21 @@ const TeacherPInfo = () => {
       <div className="">
         <div className="">
           <InputField
-            placeholder="Enter Teacher’s Code:"
-            name="serialNo"
+            placeholder="Enter Teacher's Code:"
+            name="TeacherCode"
             value={formData.TeacherCode}
             onChange={handleChange}
-            label="Teacher’s Code:"
+            label="Teacher's Code:"
             required
           />
         </div>
 
         <div className="">
           <InputField
-            label="Teacher’s Name:"
-            name="class"
-            value={formData.class}
+            label="Teacher's Name:"
+            name="fullName"
+            value={formData.fullName}
             onChange={handleChange}
-            options={classOptions}
             placeholder="Enter Full Name"
             required
           />
@@ -141,6 +131,7 @@ const TeacherPInfo = () => {
           accept=".jpg,.jpeg"
           placeholder="Upload a profile picture (10KB-40KB)"
         />
+
         <div className="flex justify-between gap-x-4">
           <RadioField
             label="Gender:"
@@ -160,17 +151,40 @@ const TeacherPInfo = () => {
             className="border-0 border-b rounded-none"
           />
         </div>
+
         <div>
           <h2 className="text-md mt-4">Phone No:</h2>
           <div className="grid grid-cols-3 gap-x-4">
-            <InputField placeholder="Primary No." />
-            <InputField placeholder="Secondary No." />
-            <InputField placeholder="Optional No." />
+            <InputField
+              placeholder="Primary No."
+              name="primaryPhone"
+              value={formData.primaryPhone}
+              onChange={handleChange}
+            />
+            <InputField
+              placeholder="Secondary No."
+              name="secondaryPhone"
+              value={formData.secondaryPhone}
+              onChange={handleChange}
+            />
+            <InputField
+              placeholder="Optional No."
+              name="optionalPhone"
+              value={formData.optionalPhone}
+              onChange={handleChange}
+            />
           </div>
         </div>
+
         <div>
           <h2 className="text-md mt-4">Email:</h2>
-          <InputField placeholder="Email" />
+          <InputField
+            placeholder="Email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            type="email"
+          />
         </div>
       </div>
     </form>
