@@ -14,7 +14,7 @@ const TeacherForm = () => {
       <TeacherSubject />
       <TeacherClass />
       <TeacherBank />
-      <TeacherDetails />
+      {/* <TeacherDetails /> */}
       <button
         type="submit"
         className="px-4 py-2 bg-[#789336] w-1/3 text-white rounded-md mt-10 h-12"
