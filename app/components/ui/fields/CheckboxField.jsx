@@ -1,103 +1,55 @@
-import CheckboxField from "@/app/components/ui/fields/CheckboxField";
-import SelectField from "@/app/components/ui/fields/SelectField";
-import React, { useState } from "react";
+import React from "react";
+import { cn } from "@/lib/utils";
 
-const TeacherClass = () => {
-  const [formData, setFormData] = useState({
-    classesTaught: [],
-    subject1: "",
-    subject2: "",
-    experiencedSubject1: "",
-    experiencedSubject2: "",
-    wardAppearingSubject: ""
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form Data:', formData);
-  };
-
-  const classOptions = [
-    "KG-Nursery",
-    "Class I",
-    "Class II",
-    "Class III ",
-    "Class IV",
-    "Class V",
-    "Class VI",
-    "Class VII",
-    "Class VIII",
-    "Class IX",
-    "Class X",
-    "Class XI",
-    "Class XII",
-  ];
-
+const CheckboxField = ({
+  id,
+  name,
+  label,
+  checked = false,
+  disabled = false,
+  required = false,
+  error,
+  className,
+  onChange,
+  ...props
+}) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="w-3/4">
-        <CheckboxField
-          label="Select Classes Taught:"
-          name="classesTaught"
-          value={formData.classesTaught}
-          options={classOptions}
-          onChange={handleChange}
+    <div className={cn("flex items-start gap-2", className)}>
+      <div className="relative flex items-center">
+        <input
+          type="checkbox"
+          id={id}
+          name={name}
+          checked={checked}
+          disabled={disabled}
+          required={required}
+          onChange={onChange}
+          className={cn(
+            "h-4 w-4 rounded border border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+            disabled && "cursor-not-allowed opacity-50",
+            error && "border-red-500",
+            "cursor-pointer"
+          )}
+          {...props}
         />
       </div>
-      <div className="mt-6">
-        <h2>SENIOR SECONDARY EDUCATION:</h2>
-        <div className="grid grid-cols-4 gap-x-5 pt-[10px]">
-          <SelectField
-            label="Subject 1(Currently Teaching):"
-            placeholder="Select Subject 1"
-            value={formData.subject1}
-            onSelect={handleChange}
-            name="subject1"
-          />
-          <SelectField
-            label="Subject 2:"
-            placeholder="Select Additional Subject"
-            value={formData.subject2}
-            onSelect={handleChange}
-            name="subject2"
-          />
-        </div>
-        <div className="grid grid-cols-4 gap-x-5 pt-[10px]">
-          <SelectField
-            label="Experienced Subject 1 :"
-            placeholder="Currently Teaching Subject 1"
-            value={formData.experiencedSubject1}
-            onSelect={handleChange}
-            name="experiencedSubject1"
-          />
-          <SelectField
-            label="Experienced Subject 2:"
-            placeholder="Select Experienced Subject 2"
-            value={formData.experiencedSubject2}
-            onSelect={handleChange}
-            name="experiencedSubject2"
-          />
-        </div>
-        <div className="grid grid-cols-4 gap-x-5 pt-[10px]">
-          <SelectField
-            label="Ward Appearing in Class 12 Subject-1 Above:"
-            placeholder="Select Ward Appearing Subject"
-            value={formData.wardAppearingSubject}
-            onSelect={handleChange}
-            name="wardAppearingSubject"
-          />
-        </div>
-      </div>
-    </form>
+      {label && (
+        <label
+          htmlFor={id}
+          className={cn(
+            "text-sm text-gray-700",
+            disabled && "cursor-not-allowed opacity-50",
+            error && "text-red-500",
+            !disabled && "cursor-pointer"
+          )}
+        >
+          {label}
+          {required && <span className="ml-1 text-red-500">*</span>}
+        </label>
+      )}
+      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+    </div>
   );
 };
 
-export default TeacherClass;
+export default CheckboxField;

@@ -12,7 +12,7 @@ const TeacherForm = () => {
       <TeacherPInfo />
       <TeacherCategory />
       <TeacherSubject />
-      {/* <TeacherClass /> */}
+      <TeacherClass />
       <TeacherBank />
       <TeacherDetails />
       <button
